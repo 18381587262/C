@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char str[]="1+2+2+1+2+5+4-1-3+4-8";
+	int res=str[0]-'0',nb=str[0]-'0';
+	int i = 1,j=1;
+	for(j;j<strlen(str);j++)
+	{
+		if(str[j]=='+')
+		{
+			int right=str[j+1]-'0';
+			nb=nb+right;
+			j++;
+		}
+		else if(str[j]=='-')
+		{
+			int right=str[j+1]-'0';
+			nb=nb-right;
+			j++;
+		}
+
+	}
+	nb+=res;
+	printf("nb=%d\n",nb);
+
+    return 0;
+}
