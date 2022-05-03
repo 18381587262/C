@@ -1,0 +1,15 @@
+#include<stdio.h>
+int main()
+{
+	int a;
+	char gw,sw,bw,qw,ww;
+	printf("随机输入一个五位数；");
+	scanf("%d",&a);
+	gw=a/1%10;
+	sw=a/10%10;
+	bw=a/100%10;
+	qw=a/1000%10;
+	ww=a/10000%10;
+	printf("%d %d %d %d %d",gw,sw,bw,qw,ww);
+	return 0;
+}
