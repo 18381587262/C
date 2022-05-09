@@ -1,0 +1,24 @@
+#include<stdio.h>
+
+int main()
+{
+
+ int x;//定义变量
+
+ while (1)
+ {
+
+ scanf("%d", &x);
+
+ if (x <= 0)//判断是否为正整数
+
+ printf("Data error!\n");
+
+ else if (x % 2 == 0 && x % 5 == 0 && x % 7 == 0)//判断是否为2,5和7的倍数
+
+ printf("Yes!\n");
+
+ else printf("No!\n");
+
+ }
+}
