@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    setbuf(stdout,NULL);               //eclipse 需要加这段, 不然运行后看不到输出
+    float sum, money, year, rate;
+    printf("input money \n");          //等待用户输入存款金额, 回车键结束.
+    scanf("%f", &money);               //赋值给变量 money
+    printf("input year \n");           //等待用户输入存款期限, 回车键结束.
+    scanf("%f", &year);                //赋值给变量 year
+    printf("input rate \n");           //等待用户输入年利率, 回车键结束.
+    scanf("%f", &rate);                //赋值给变量 rate
+    sum = money * pow(1 + rate, year); //pow函数
+    printf("sum= %.2f" , sum);         //输出本息, 保留小数点后两位
+
+}
