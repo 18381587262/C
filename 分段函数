@@ -1,0 +1,22 @@
+#include<stdio.h>
+int main()
+{
+	int x=35,y;
+	if(x==0)
+	{
+		y=0;
+	}
+	else
+	{
+		if(x>10)
+		{
+			y=3*x+5;
+		}
+		else
+		{
+		y=x-2;
+    	}
+	
+	}
+	printf("y=%d",y);
+ } 
