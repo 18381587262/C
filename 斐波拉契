@@ -1,0 +1,15 @@
+#include<stdio.h>
+int main()
+{
+	int a[25],n,i,s=2;
+	a[0]=a[1]=1;
+	printf("1 1 ");
+	for(i=2;i<25;i++)
+	{
+	a[i]=a[i-1]+a[i-2];
+	s+=a[i];
+	printf("%d ",a[i]);
+	}
+	printf("\nsum=%d\n",s);
+	return 0;
+}
