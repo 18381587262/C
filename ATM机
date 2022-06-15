@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 #include<stdlib.h>
 
 struct Account
@@ -18,9 +19,31 @@ int language;//1-Chinese,2-English,3-Rich
 
 Account * head=NULL;//指向头结点的指针
 Account * tail=NULL; //指向尾结点 
+Account *curAccount=NULL;//记录当前账户 
 
 void signIn()
 {
+	int i;
+	Account a;
+	for(i=0;i<3;i++)
+	{ 
+		printf("请输入账号：");
+		scanf("%s",a.username);
+		
+		printf("请输入密码：");
+		scanf("%s",a.password);
+		
+		if(findAccount(a))
+		{
+			printf("登录成功！\n");
+			updatePassword();
+			break;
+		}
+		else
+		{
+			printf("登录失败！\n");
+		}
+	}
 	
 }
 
@@ -30,7 +53,7 @@ void signUp()
 	Account * newNode=(Account *)malloc(sizeof(Account));
 	
 	//结点赋值
-    printf("请输入账号：\n");
+    	printf("请输入账号：\n");
 	scanf("%s",newNode->username);
   
 	printf("请输入密码：\n");
@@ -39,7 +62,7 @@ void signUp()
 	printf("请输入姓名：\n");
 	scanf("%s",newNode->name);
 	
-    printf("请输入身份证：\n");
+    	printf("请输入身份证：\n");
 	scanf("%s",newNode->idCard);
 	
 	printf("请输入电话：\n");
@@ -160,11 +183,15 @@ int main()
 	
 	scanf("%d",&language);
 	
+ 	signIn();
+	
+	sighUp();
+	
 	showMenu();
- 
-  loadData();                 
+	
+  	loadData();                 
 
-  saveData();
+  	saveData();
 	
 	printLinkedList(); 
 	
