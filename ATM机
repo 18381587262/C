@@ -21,6 +21,19 @@ Account * head=NULL;//指向头结点的指针
 Account * tail=NULL; //指向尾结点 
 Account *curAccount=NULL;//记录当前账户 
 
+//主菜单
+void Menu()
+{
+	printf("\n\t\t欢迎进入ATM\n");
+	printf("\t\t1.开户\n");
+	printf("\t\t2.登入\n");
+	printf("\t\t3.语言\n");
+	printf("\t\t4.取款\n");
+	printf("\t\t5.转账\n");
+	printf("\t\t6.退出\n");
+}
+
+//登录
 void signIn()
 {
 	int i;
@@ -181,6 +194,7 @@ int main()
 	printf("English Service，Press 2\n");
 	printf("一夜暴富，按3\n");
 	
+	Menu();
 	scanf("%d",&language);
 	
  	signIn();
