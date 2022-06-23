@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<windows.h>
 
 struct Account
 {
@@ -61,7 +62,7 @@ void signUpC()
 	printf("——————————————\n");
 	printf("|嘿嘿，创建成功!           |\n");
 	printf("——————————————\n");
-	
+	return;
 }
 void signUpE()
 {
@@ -104,7 +105,7 @@ void signUpE()
 	printf("——————————————\n");
 	printf("|Created successfully!     |\n");
 	printf("——————————————\n");
-	
+	return;
 }
 
 
@@ -147,6 +148,7 @@ void updatePasswordC()
 		printf("|哦豁，密码错误！          |\n");
 		printf("——————————————\n");
 	}
+	return;
 }
 
 void updatePasswordE()
@@ -172,6 +174,7 @@ void updatePasswordE()
 		printf("|The password is wrong and cannot be modefied！    |\n");
 		printf("——————————————————————————\n");
 	}
+	return;
 }
 
 
@@ -195,7 +198,7 @@ void saveMoneyC()
 		printf("|哦豁，金额不符，无法存款  |\n");
 		printf("——————————————\n");
 	}
-	
+	return;
 }
 void saveMoneyE()
 {
@@ -217,7 +220,7 @@ void saveMoneyE()
 		printf("|the amount does not match,so the deposit cannot be made |\n");
 		printf("—————————————————————————————\n");
 	}
-	
+	return;
 }
 void drawMoneyC()
 {
@@ -240,7 +243,7 @@ void drawMoneyC()
 		printf("|哦豁，余额不足!           |\n");
 		printf("——————————————\n");
 	}
-	
+	return;
 }
 void drawMoneyE()
 {
@@ -263,7 +266,7 @@ void drawMoneyE()
 		printf("|wiyhdrawal failed due to insufficient balance |\n");
 		printf("————————————————————————\n");
 	}
-	
+	return;
 }
 
 Account *otherAccount=NULL;
@@ -318,6 +321,7 @@ void transferC()
 		printf("|账户输入错误！            |\n");
 		printf("——————————————\n");
 	}
+	return;
 }
 
 void transferE()
@@ -350,13 +354,13 @@ void transferE()
 			printf("——————————————————————\n");
 		}
 	}
-	
 	else
 	{
 		printf("——————————————\n");
 		printf("|Account error！           |\n");
 		printf("——————————————\n");
 	}
+	return;
 }
 
 void homePageC()
@@ -377,18 +381,22 @@ void homePageC()
 	scanf("%d",&np);
 	if(np==1)
 	{
+		Sleep(1200);
 		updatePasswordC();
 	}
 	else if(np==2)
 	{
+		Sleep(1200);
         saveMoneyC();
 	}
 	else if(np==3)
 	{
+		Sleep(1200);
 		drawMoneyC();
 	}
 	else if(np==4)
 	{
+		Sleep(1200);
 		transferC();
 	}
 	else
@@ -397,6 +405,7 @@ void homePageC()
 		printf("|输入错误                  |\n");
 		printf("——————————————\n");
 	}
+	return;
 }
 
 void homePageE()
@@ -417,18 +426,22 @@ void homePageE()
 	scanf("%d",&np);
 	if(np==1)
 	{
+		Sleep(1200);
 		updatePasswordE();
 	}
 	else if(np==2)
 	{
+		Sleep(1200);
         saveMoneyE();
 	}
 	else if(np==3)
 	{
+		Sleep(1200);
 		drawMoneyE();
 	}
 	else if(np==4)
 	{
+		Sleep(1200);
 		transferE();
 	}
 	else
@@ -437,6 +450,7 @@ void homePageE()
 		printf("|Input error               |\n");
 		printf("——————————————\n");
 	}
+	return;
 }
 void signInC()
 {
@@ -456,6 +470,7 @@ void signInC()
 		
 		if(findAccount(a))
 		{
+			Sleep(1200);
 			homePageC();
 			
 			return;
@@ -467,6 +482,7 @@ void signInC()
 			printf("——————————————\n");
 		}
 	} 
+	return;
 }
 void signInE()
 {
@@ -485,6 +501,7 @@ void signInE()
 		
 		if(findAccount(a)==1)
 		{
+			Sleep(1200);
 			homePageE();
 			return;
 		}
@@ -495,6 +512,7 @@ void signInE()
 			printf("——————————————\n");
 		}
 	}
+	return;
 }
 
 /**
@@ -547,6 +565,7 @@ void saveData()
 			curP=curP->next;
 		}
 	}
+	return;
 }
 
 
@@ -562,11 +581,12 @@ void showMenuC()
 	
 	if(n==1)
 	{
+		Sleep(1200);
 		signUpC();
 	}
 	else if(n==2)
 	{
-		
+		Sleep(1200);
 		signInC();
 	}
 	
@@ -576,7 +596,7 @@ void showMenuC()
 		printf("|哦豁，输入错误！           |");
 		printf("——————————————\n");
 	}
-	
+	return;
 }
 
 void showMenuE()
@@ -591,14 +611,13 @@ void showMenuE()
 	
 	if(n==1)
 	{
+		Sleep(1200);
 		signUpE();
 	}
 	else if(n==2)
 	{
-		
+		Sleep(1200);
 		signInE();
-		
-		
 	}
 	else
 	{
@@ -606,6 +625,7 @@ void showMenuE()
 		printf("|Input error！               |");
 		printf("——————————————\n");
 	}
+	return;
 }
 int main()
 {
@@ -620,6 +640,8 @@ int main()
 	printf("——————————————\n");
 	printf("|2.English                 |\n");
 	printf("——————————————\n");
+	printf("|3.暴富                    |\n");
+	printf("——————————————\n");
 	scanf("%d",&language);
 	if(language==1)
 	{
@@ -630,7 +652,8 @@ int main()
 			printf("|嘿嘿，加载成功！          |\n");
 			printf("——————————————\n");
 			showMenuC();
-		               saveData();
+			Sleep(1200);
+		    saveData();
 		}
 		else
 		{
@@ -648,9 +671,28 @@ int main()
 			printf("——————————————\n");
 			printf("|Load successful！         |\n");
 			printf("——————————————\n");
+			Sleep(1200);
 			showMenuE();
 			saveData();
 		}
+		else
+		{
+			printf("——————————————\n");
+			printf("|failed to load！          |\n");
+			printf("——————————————\n");
+		}	
+	}
+	else if(language==3)
+	{
+		int status=loadData();
+		if(status==1)
+		{
+			printf("————————————————\n");
+			printf("|如若需要请加入牛马组织666!    |\n");
+			printf("————————————————\n");
+			Sleep(1200);
+			saveData();
+		} 
 		else
 		{
 			printf("——————————————\n");
@@ -666,6 +708,5 @@ int main()
 		printf("|Input error                 |");
 		printf("——————————————\n");
 	}
-	
 	return 0;
 } 
