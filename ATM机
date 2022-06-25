@@ -2,7 +2,75 @@
 #include<stdlib.h>
 #include<string.h>
 #include<windows.h>
+#include<conio.h>
+#define ROW 9
+#define COL 11
+char map[ROW][COL+1]={
+{"*#*********"},
+{"***###*###*"},
+{"###**#****#"},
+{"*#**###**#*"},
+{"***********"},
+{"#####*##*##"},
+{"**#*****#*"},
+{"***#*###**#"},
+{"*#*********"},
+};
+void print_map()
+{
+	for(int i=0;i<ROW;i++)
+	{
+		puts(map[1]);
+	}
+}
+void show_cursor(int x,int y)
+{
+	COORD pos;
+	pos.X=x;
+	pos.Y=y;
+	printf("curX=%d,curY=%d\n",x,y);
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),pos);
+}
+int curX,curY;
+int call()
+{
+	while(1)
+	{
+		system("cls");
+		print_map();
+	    show_cursor(curX,curY);
+	    char t=getch();
+		if(t=='w')
+		{
+			//向上走
+			if((curY-1)>=0 && map[curY-1][curX]=='*'||map[curY-1][curX+1]=='E') curY--;
+		}
+		else if(t=='s')
+		{
+			//向下走
+			if((curY+1)<ROW && map[curY+1][curX]=='*'||map[curY+1][curX]=='E') curY++;
+		}
+		else if(t=='a')
+		{
+			//向左走
+			if((curY-1)>=0 && map[curY][curX]-1=='*'||map[curY][curX-1]=='E') curY--;
+		}
+		else if(t=='d')
+		{
+			//向右走
+			if((curY+1)<COL && map[curY][curX+1]=='*'||map[curY][curX+1]=='E') curY++;
+		}
+		if(map[curY][curX]=='E')
+		{
+			printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+			printf("|!!! 双手抱头，慢慢蹲下，你被捕了|/n");
+			printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+			system("cls");
+		}
 
+	}
+	return 0;
+}
 struct Account
 {
 	char name[100];
@@ -105,7 +173,7 @@ void signUpE()
 	printf("——————————————\n");
 	printf("|Created successfully!     |\n");
 	printf("——————————————\n");
-	return;
+	system("cls");
 }
 
 
@@ -377,27 +445,28 @@ void homePageC()
 	printf("——————————————\n");
 	printf("|4.转账                    |\n");
 	printf("——————————————\n");
+	printf("|0.返回                    |\n");
+	printf("——————————————\n");
 	int np;
 	scanf("%d",&np);
 	if(np==1)
 	{
-		Sleep(1200);
 		updatePasswordC();
 	}
 	else if(np==2)
 	{
-		Sleep(1200);
         saveMoneyC();
 	}
 	else if(np==3)
 	{
-		Sleep(1200);
 		drawMoneyC();
 	}
 	else if(np==4)
 	{
-		Sleep(1200);
 		transferC();
+	}
+	else if(np==0)
+	{
 	}
 	else
 	{
@@ -426,23 +495,22 @@ void homePageE()
 	scanf("%d",&np);
 	if(np==1)
 	{
-		Sleep(1200);
 		updatePasswordE();
 	}
 	else if(np==2)
 	{
-		Sleep(1200);
         saveMoneyE();
 	}
 	else if(np==3)
 	{
-		Sleep(1200);
 		drawMoneyE();
 	}
 	else if(np==4)
 	{
-		Sleep(1200);
 		transferE();
+	}
+	else if(np==0)
+	{
 	}
 	else
 	{
@@ -450,7 +518,7 @@ void homePageE()
 		printf("|Input error               |\n");
 		printf("——————————————\n");
 	}
-	return;
+	system("cls");
 }
 void signInC()
 {
@@ -470,9 +538,7 @@ void signInC()
 		
 		if(findAccount(a))
 		{
-			Sleep(1200);
 			homePageC();
-			
 			return;
 		}
 		else
@@ -501,7 +567,6 @@ void signInE()
 		
 		if(findAccount(a)==1)
 		{
-			Sleep(1200);
 			homePageE();
 			return;
 		}
@@ -512,7 +577,7 @@ void signInE()
 			printf("——————————————\n");
 		}
 	}
-	return;
+	return;	
 }
 
 /**
@@ -571,59 +636,73 @@ void saveData()
 
 void showMenuC()
 {
-	printf("——————————————\n");
-	printf("|开户，按1                 |\n");
-	printf("——————————————\n");
-	printf("|登录，按2                 |\n");
-	printf("——————————————\n");
-	int n;
-	scanf("%d",&n);
-	
-	if(n==1)
+	while(1) 
 	{
-		Sleep(1200);
-		signUpC();
-	}
-	else if(n==2)
-	{
-		Sleep(1200);
-		signInC();
-	}
-	
-	else
-	{
+		system("cls");
 		printf("——————————————\n");
-		printf("|哦豁，输入错误！           |");
+		printf("|1.开户                    |\n");
 		printf("——————————————\n");
+		printf("|2.登录                    |\n");
+		printf("——————————————\n");
+		printf("|0.返回					   |\n");
+		printf("——————————————\n");
+		int n;
+		scanf("%d",&n);
+		
+		if(n==1)
+		{
+			signUpC();
+			showMenuC();
+		}
+		else if(n==2)
+		{
+			signInC();
+		}
+		else if(n==0)
+		{
+			break;
+		}
+		else
+		{
+			printf("——————————————\n");
+			printf("|哦豁，输入错误！           |");
+			printf("——————————————\n");
+		}
 	}
 	return;
 }
 
 void showMenuE()
-{
-	printf("——————————————\n");
-	printf("|signUp，input 1           |\n");
-	printf("——————————————\n");
-	printf("|signIn，input 2           |\n");
-	printf("——————————————\n");
-	int n;
-	scanf("%d",&n);
-	
-	if(n==1)
+{	
+	while(1)
 	{
-		Sleep(1200);
-		signUpE();
-	}
-	else if(n==2)
-	{
-		Sleep(1200);
-		signInE();
-	}
-	else
-	{
-	 	printf("——————————————\n");
-		printf("|Input error！               |");
 		printf("——————————————\n");
+		printf("|1.signUp                  |\n");
+		printf("|2.signIn                  |\n");
+		printf("|0.return                  |\n");
+		int n;
+		scanf("%d",&n);
+		
+		if(n==1)
+		{
+			signUpE();
+			Sleep(1000);
+		}
+		else if(n==2)
+		{
+			
+			signInE();
+			Sleep(1000);
+			
+		}
+		else if(n==0)
+		{
+			break;
+		}
+		else
+		{
+			printf("Input error！");
+		}
 	}
 	return;
 }
@@ -642,6 +721,8 @@ int main()
 	printf("——————————————\n");
 	printf("|3.暴富                    |\n");
 	printf("——————————————\n");
+	printf("|4.退出                    |\n");
+	printf("——————————————\n");
 	scanf("%d",&language);
 	if(language==1)
 	{
@@ -652,7 +733,6 @@ int main()
 			printf("|嘿嘿，加载成功！          |\n");
 			printf("——————————————\n");
 			showMenuC();
-			Sleep(1200);
 		    saveData();
 		}
 		else
@@ -671,7 +751,6 @@ int main()
 			printf("——————————————\n");
 			printf("|Load successful！         |\n");
 			printf("——————————————\n");
-			Sleep(1200);
 			showMenuE();
 			saveData();
 		}
@@ -687,10 +766,7 @@ int main()
 		int status=loadData();
 		if(status==1)
 		{
-			printf("————————————————\n");
-			printf("|如若需要请加入牛马组织666!    |\n");
-			printf("————————————————\n");
-			Sleep(1200);
+			call();
 			saveData();
 		} 
 		else
@@ -700,6 +776,10 @@ int main()
 			printf("——————————————\n");
 		}	
 	}
+	else if(language==4)
+		{
+			exit(0);
+		}
 	else
 	{
 		printf("——————————————\n");
@@ -708,5 +788,6 @@ int main()
 		printf("|Input error                 |");
 		printf("——————————————\n");
 	}
+	saveData();
 	return 0;
 } 
